@@ -699,6 +699,56 @@ const GlobalStyle = () => (
     .nav-tab.on { background: linear-gradient(145deg, rgba(${P.accRgb},0.22), rgba(${P.accRgb},0.10)); color: ${P.acc}; box-shadow: inset 0 1px 0 rgba(${P.ink},0.10); }
     .nav-tab span { font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 600; }
     @media (prefers-reduced-motion: reduce) { .nav-tab { transition: none; } }
+    .daily-device-card { background: ${P.card}; padding: 20px; border: 1px solid rgba(${P.ink},.16); overflow: hidden; }
+    .daily-device-header { display:flex; align-items:center; justify-content:space-between; gap:8px; }
+    .daily-eyebrow { font:600 10px 'DM Sans',sans-serif; color:${P.muted}; letter-spacing:.8px; }
+    .daily-device-header h2 { font:800 27px 'Barlow Condensed',sans-serif; color:${P.text}; margin-top:3px; }
+    .device-status { font-size:10px; color:${P.muted}; text-align:right; }
+    .device-picker { display:flex; gap:4px; padding:4px; margin:16px 0 12px; background:${P.inset}; border-radius:24px; }
+    .device-picker button { flex:1; padding:9px 4px; min-height:40px; border:1px solid transparent; background:transparent; color:${P.sub}; font:600 11px 'DM Sans',sans-serif; cursor:pointer; }
+    .device-picker button[aria-pressed=true] { background:rgba(${P.accRgb},.16); border-color:rgba(${P.accRgb},.24); color:${P.acc}; }
+    .device-summary { display:grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); align-items:center; gap:16px; min-height:214px; }
+    .device-progress { position:relative; width:100%; max-width:180px; height:212px; display:flex; align-items:center; justify-content:center; margin:0 auto; }
+    .device-strap { position:absolute; top:0; bottom:0; width:78px; border-radius:24px; background:linear-gradient(90deg,#101c30,#283b56 50%,#101c30); border:1px solid rgba(255,255,255,.10); }
+    .device-case { position:relative; width:166px; height:166px; border-radius:50%; padding:7px; background:linear-gradient(130deg,#70829b,#182536 40%,#465c77); box-shadow:0 10px 20px rgba(0,0,0,.24); border:1px solid rgba(255,255,255,.24); }
+    .device-case::after { content:''; position:absolute; right:-4px; top:58px; width:4px; height:24px; background:#526b89; border-radius:3px; }
+    .device-face { position:relative; width:100%; height:100%; border-radius:inherit; background:radial-gradient(ellipse at 20% 10%,#122e50,#070f20 70%); overflow:hidden; }
+    .device-face svg { width:100%; height:100%; }
+    .daily-ring-fill { transition:stroke-dashoffset 1.2s cubic-bezier(.22,1,.36,1); }
+    .device-center { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; pointer-events:none; color:#fff; }
+    .device-center strong { font:800 28px 'Barlow Condensed',sans-serif; }
+    .device-center strong span { font-size:13px; }
+    .device-center > span { color:#b5cbea; font-size:8px; letter-spacing:1px; }
+    .device-apple .device-case { border-radius:40px; width:150px; height:178px; }
+    .device-fit .device-case { border-radius:32px; width:120px; height:188px; }
+    .device-fit .device-strap { width:62px; }
+    .device-fit .device-face { display:flex; align-items:center; }
+    .device-fit .device-center strong { font-size:23px; }
+    .device-fit .device-center > span { font-size:7px; }
+    .device-steps { display:flex; flex-direction:column; gap:4px; }
+    .device-steps strong { font:800 36px/1 'Barlow Condensed',sans-serif; color:${P.text}; font-variant-numeric:tabular-nums; }
+    .device-steps > span:last-child { color:${P.sub}; font-size:11px; }
+    .device-heart { display:flex; align-items:baseline; gap:5px; margin-top:17px; }
+    .device-heart > span:first-child { color:${P.bad}; font-size:20px; }
+    .device-heart strong { font:800 28px/1 'Barlow Condensed',sans-serif; color:${P.text}; }
+    .device-heart > span:last-child { color:${P.muted}; font-size:10px; }
+    .reading-caption { font-size:10px; line-height:1.5; color:${P.sub}; margin-top:4px; }
+    .daily-ring-legend { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:5px; padding:13px 0; border-top:1px solid rgba(${P.ink},.10); }
+    .daily-ring-legend > div { display:flex; gap:5px; align-items:center; font-size:11px; color:${P.sub}; }
+    .daily-ring-legend i { width:6px; height:6px; border-radius:50%; flex-shrink:0; }
+    .daily-ring-legend strong { color:${P.text}; font-size:11px; }
+    .daily-device-caption { color:${P.muted}; font-size:10px; line-height:1.6; margin-bottom:14px; }
+    .sync-points { display:flex; gap:12px; align-items:center; justify-content:space-between; padding:13px 14px; border-radius:18px; background:linear-gradient(120deg,rgba(${P.accRgb},.10),${P.inset}); border:1px solid rgba(${P.accRgb},.20); }
+    .sync-points > div:first-child { display:flex; flex-direction:column; flex-shrink:0; }
+    .sync-points strong { color:${P.acc}; font:800 27px 'Barlow Condensed',sans-serif; }
+    .sync-points small { font:600 10px 'DM Sans',sans-serif; }
+    .sync-points-message { max-width:175px; text-align:right; font-size:11px; line-height:1.5; color:${P.sub}; }
+    .sync-points-help { font-size:10px; color:${P.muted}; line-height:1.6; margin-top:10px; }
+    .points-earned { animation:syncReward .65s ease-out; }
+    @keyframes syncReward { 0% {transform:scale(.98);box-shadow:0 0 0 0 rgba(${P.accRgb},.4);} 60%{transform:scale(1.02);box-shadow:0 0 0 9px rgba(${P.accRgb},0);} 100%{transform:scale(1);} }
+    @media(max-width:360px) { .daily-device-card{padding:16px 12px;} .device-summary{gap:9px;} .device-case{width:136px;height:136px;} .device-apple .device-case{width:125px;height:164px;} .device-fit .device-case{width:106px;} .device-steps strong{font-size:30px;} .daily-ring-legend > div{gap:3px;font-size:10px;} }
+    @media(prefers-reduced-motion:reduce) { .daily-ring-fill{transition:none;} .points-earned{animation:none;} }
+
     /* Shared refined surfaces use explicit classes for stateful cards. */
     .ft-surface { border-radius: 26px; box-shadow: 0 8px 24px rgba(${P.shadow},0.16), inset 0 1px 0 rgba(${P.ink},0.08); }
     ${P.glass ? `.ft-surface { -webkit-backdrop-filter: blur(18px) saturate(125%); backdrop-filter: blur(18px) saturate(125%); }` : ""}
@@ -895,6 +945,45 @@ function mergeWatchSession(logs, s) {
 // Two-way, real-time sync with FitTracker Watch through your Firebase database (FTWLive).
 // Each set is stored per date/exercise/set with a timestamp; the newest edit wins.
 
+const SYNC_REWARD_KEY = "ftSyncRewardsV1";
+const SYNC_POINTS = 25;
+function readSyncRewards() {
+  try {
+    const saved = JSON.parse(localStorage.getItem(SYNC_REWARD_KEY));
+    const days = saved && saved.days && typeof saved.days === "object" && !Array.isArray(saved.days) ? saved.days : {};
+    return {days: Object.fromEntries(Object.entries(days).filter(([day, value]) => /^\d{4}-\d{2}-\d{2}$/.test(day) && Number.isFinite(value) && value > 0))};
+  } catch { return {days:{}}; }
+}
+function awardSyncPoints() {
+  const rewards = readSyncRewards(), day = todayKey();
+  if (rewards.days[day]) return false;
+  rewards.days[day] = Date.now();
+  try { localStorage.setItem(SYNC_REWARD_KEY, JSON.stringify(rewards)); } catch { return false; }
+  window.dispatchEvent(new CustomEvent("ft-sync-reward", {detail:{points:SYNC_POINTS, day}}));
+  return true;
+}
+function isFreshWatchRecord(date, record) {
+  const now = Date.now(), t = Number(record && record.t);
+  return date === todayKey() && Number.isFinite(t) && t > 0 && t <= now + 60000 && localKey(t) === todayKey();
+}
+function useSyncRewards() {
+  const [rewards, setRewards] = useState(readSyncRewards);
+  const [celebrate, setCelebrate] = useState(false);
+  useEffect(() => {
+    let timer;
+    const refresh = (event) => {
+      if (event.type === "storage" && event.key !== SYNC_REWARD_KEY) return;
+      setRewards(readSyncRewards());
+      if (event.type === "ft-sync-reward") {
+        setCelebrate(true); clearTimeout(timer); timer = setTimeout(() => setCelebrate(false), 3500);
+      }
+    };
+    window.addEventListener("ft-sync-reward", refresh); window.addEventListener("storage", refresh);
+    return () => {clearTimeout(timer); window.removeEventListener("ft-sync-reward", refresh); window.removeEventListener("storage", refresh);};
+  }, []);
+  return {points:Object.keys(rewards.days).length * SYNC_POINTS, earnedToday:!!rewards.days[todayKey()], celebrate};
+}
+
 const LIVE_META_KEY = "watchLiveMeta";      // last synced value + time for each set
 const normCell = (s) => !s ? {done:false,lbs:"",reps:""} : typeof s === "boolean" ? {done:s,lbs:"",reps:""} : {done:!!s.done, lbs:s.lbs||"", reps:s.reps||""};
 const cellHash = (c) => `${c.done?1:0}|${c.lbs}|${c.reps}`;
@@ -963,7 +1052,7 @@ function useWatchLive({ logs, setLogs, activeTimer, setActiveTimer }) {
   const applyRemote = useCallback(() => {
     const items = queue.current.splice(0);
     if (!items.length) return;
-    let next = logsRef.current, changed = false;
+    let next = logsRef.current, changed = false, receivedWatchData = false;
     items.forEach(({date, exId, idx, cell}) => {
       const k = `${date}/${exId}/${idx}`, m = metaRef.current[k], t = cell.t || 0;
       if (m && m.t >= t) return;
@@ -973,9 +1062,11 @@ function useWatchLive({ logs, setLogs, activeTimer, setActiveTimer }) {
       metaRef.current[k] = {h: cellHash(c), t};
       if (cellHash(c) === cellHash(local)) return;
       next = writeCell(next, date, exId, idx, c);
+      if (cell.b === "w" && isFreshWatchRecord(date, cell)) receivedWatchData = true;
       changed = true;
     });
     saveMeta();
+    if (receivedWatchData) awardSyncPoints();
     if (changed) { logsRef.current = next; setLogs(next); storageSet("logs", next); }
   }, [setLogs]);
 
@@ -1003,6 +1094,8 @@ function useWatchLive({ logs, setLogs, activeTimer, setActiveTimer }) {
   const [activity, setActivity] = useState(() => { try { return JSON.parse(localStorage.getItem("watchActivity")) || {}; } catch { return {}; } });
   const [health, setHealth] = useState(() => { try { return JSON.parse(localStorage.getItem("watchHealth")); } catch { return null; } });
   const onStats = useCallback((date, src, v) => {
+    if (v && (src === "w" || src === "hc") && isFreshWatchRecord(date, v) &&
+        [v.s, v.hr, v.c, v.k].some(n => Number.isFinite(Number(n)) && Number(n) > 0)) awardSyncPoints();
     setActivity(prev => {
       const next = {...prev, [date]: {...(prev[date] || {}), [src]: v}};
       const keep = Object.keys(next).sort().slice(-14);
@@ -1026,6 +1119,7 @@ function useWatchLive({ logs, setLogs, activeTimer, setActiveTimer }) {
     if (!m && hasLocal && String(Number(cur)) !== String(lb)) return;
     metaRef.current[k] = {h: String(lb), t};
     saveMeta();
+    if (v.b === "h" && isFreshWatchRecord(date, v)) awardSyncPoints();
     if (hasLocal && Number(cur) === lb) return;
     const next = {...logsRef.current, [date]: {...(logsRef.current[date] || {}), weight: lb}};
     logsRef.current = next; setLogs(next); storageSet("logs", next);
@@ -1090,7 +1184,7 @@ function openHealthBridge(onMissing) {
 }
 
 /* ─── TODAY'S ACTIVITY (watch sensors + Samsung Health) ─────────────────── */
-/* ─── WATCH TYPE (Galaxy Watch or Apple Watch) ─────────────────────────── */
+/* ─── WATCH TYPE (Galaxy Watch, Apple Watch, or Galaxy Fit) ────────────── */
 // Your Firebase database URL, so Apple Watch setup works on a phone that has never been paired.
 // Leave it empty to type it in once on the Watch card instead.
 const FTW_DEFAULT_SYNC_URL = "";
@@ -1098,7 +1192,7 @@ const FTW_DEFAULT_SYNC_URL = "";
 const isAppleDevice = () => /iPhone|iPad|iPod/.test(navigator.userAgent) ||
   (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
 function getWatchKind() {
-  try { const k = localStorage.getItem("watchKind"); if (k === "apple" || k === "galaxy") return k; } catch {}
+  try { const k = localStorage.getItem("watchKind"); if (["apple", "galaxy", "fit"].includes(k)) return k; } catch {}
   return isAppleDevice() ? "apple" : "galaxy";
 }
 function saveWatchKind(k) {
@@ -1114,53 +1208,89 @@ function useWatchKind() {
   }, []);
   return [kind, saveWatchKind];
 }
-const WATCH_NAME = { galaxy: "Galaxy Watch", apple: "Apple Watch" };
+const WATCH_NAME = { galaxy: "Galaxy Watch", apple: "Apple Watch", fit: "Galaxy Fit" };
 const cleanSyncUrl = (v) => {
   v = String(v || "").trim().replace(/\/+$/, "");
   return /^https:\/\/[a-z0-9.-]+\.(firebaseio\.com|firebasedatabase\.app)$/i.test(v) ? v.toLowerCase() : null;
 };
 
-function ActivityCard({ activity }) {
-  const [kind] = useWatchKind();
-  const today = todayKey();
-  const a = activity[today] || {};
-  const w = a.w || {}, hc = a.hc || {};
-  const steps = Math.max(w.s || 0, hc.s || 0);
-  const stepSrc = steps === 0 ? null : (hc.s || 0) >= (w.s || 0) ? "Samsung Health" : WATCH_NAME[kind];
-  const hrSrc = [w, hc].filter(x => x.hr).sort((x, y) => (y.t || 0) - (x.t || 0))[0];
-  const lows = [w.hrMin, hc.hrMin].filter(Boolean);
-  const updated = Math.max(w.t || 0, hc.t || 0);
-  const GOAL = 10000, pct = Math.min(100, Math.round(steps / GOAL * 100));
-  const label = {fontFamily: "'DM Sans',sans-serif", fontSize: 10, color: `${P.muted}`, fontWeight: 600, textTransform: "uppercase", letterSpacing: 0.5};
-  const big = {fontFamily: "'Barlow Condensed',sans-serif", fontSize: 26, fontWeight: 800, color: `${P.text}`, lineHeight: 1.05};
-
+function DeviceProgress({ kind, rings }) {
+  const [ready, setReady] = useState(false);
+  useEffect(() => {const frame=requestAnimationFrame(() => setReady(true)); return () => cancelAnimationFrame(frame);}, [kind]);
+  const overall = rings[0].pct;
   return (
-    <div style={{background: `${P.card}`, borderRadius: 28, padding: "16px 18px", border: `1px solid rgba(${P.ink},0.16)`}}>
-      <div style={{display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 12}}>
-        <div style={{fontFamily: "'DM Sans',sans-serif", fontSize: 11, color: `${P.sub}`, fontWeight: 600, textTransform: "uppercase", letterSpacing: 0.5}}>Today's activity</div>
-        <div style={{fontFamily: "'DM Sans',sans-serif", fontSize: 11, color: `${P.muted}`}}>{updated ? `updated ${agoText(updated)}` : "waiting for watch…"}</div>
-      </div>
-      <div style={{display: "flex", alignItems: "center", gap: 16}}>
-        <Ring pct={pct} color="gradient" size={84} stroke={7}>
-          <span style={{fontSize: 22}}>👟</span>
-        </Ring>
-        <div style={{flex: 1, display: "grid", gridTemplateColumns: "1fr 1fr", rowGap: 12, columnGap: 10}}>
-          <div>
-            <div style={big}><CountUp to={steps} duration={1.2}/></div>
-            <div style={label}>steps · {pct}% of 10k</div>
-          </div>
-          <div>
-            <div style={{...big, color: hrSrc ? `${P.bad}` : `${P.faint}`}}>{hrSrc ? `♥ ${hrSrc.hr}` : "♥ —"}</div>
-            <div style={label}>{lows.length ? `bpm · low ${Math.min(...lows)}` : "bpm"}</div>
-          </div>
-          {(w.c > 0 || w.k > 0) && <>
-            <div><div style={{...big, fontSize: 20}}>{(w.c || 0).toLocaleString()}</div><div style={label}>kcal (watch)</div></div>
-            <div><div style={{...big, fontSize: 20}}>{w.k || 0}</div><div style={label}>km walked</div></div>
-          </>}
+    <div className={"device-progress device-" + kind} aria-label={`${WATCH_NAME[kind]} daily progress illustration`}>
+      <div className="device-strap" aria-hidden="true"/>
+      <div className="device-case">
+        <div className="device-face">
+          <svg viewBox="0 0 160 160" role="img" aria-label={rings.map(r => `${r.label} ${Math.round(r.pct)} percent`).join(", ")}>
+            {rings.map((ring, i) => {
+              const radius=66-i*15, circumference=2*Math.PI*radius;
+              return <g key={ring.label} transform="rotate(-90 80 80)">
+                <circle cx="80" cy="80" r={radius} fill="none" stroke={ring.color} opacity="0.13" strokeWidth="10"/>
+                <circle className="daily-ring-fill" cx="80" cy="80" r={radius} fill="none" stroke={ring.color} strokeWidth="10" strokeLinecap="round"
+                  strokeDasharray={circumference} strokeDashoffset={circumference*(1-(ready ? Math.max(0,Math.min(100,ring.pct)) : 0)/100)}/>
+              </g>;
+            })}
+          </svg>
+          <div className="device-center"><strong><CountUp to={overall}/><span>%</span></strong><span>DAY</span></div>
         </div>
       </div>
-      {stepSrc && <div style={{fontFamily: "'DM Sans',sans-serif", fontSize: 11, color: `${P.faint}`, marginTop: 10}}>Steps from {stepSrc}</div>}
     </div>
+  );
+}
+function ActivityCard({ activity, log = {}, plan }) {
+  const [kind, setKind] = useWatchKind();
+  const rewards = useSyncRewards();
+  const [clock, setClock] = useState(Date.now());
+  useEffect(() => {const interval=setInterval(() => setClock(Date.now()),60000); return () => clearInterval(interval);},[]);
+  const today = localKey(clock), a = activity[today] || {};
+  // A band uses the Samsung Health route; never relabel a Galaxy Watch stream as band data.
+  const w = kind === "fit" ? {} : a.w || {}, hc = kind === "apple" ? {} : a.hc || {};
+  const positive = value => Number.isFinite(Number(value)) && Number(value) > 0 ? Number(value) : 0;
+  const steps = Math.round(Math.max(positive(w.s), positive(hc.s)));
+  const stepPct = Math.min(100,steps/10000*100);
+  const hrSource = [{record:w,name:WATCH_NAME[kind]}, {record:hc,name:"Samsung Health"}]
+    .filter(({record:r}) => positive(r.hr) && positive(r.t)).sort((x,y) => y.record.t-x.record.t)[0];
+  // The transport supplies a record timestamp, not a separate measurement timestamp.
+  const heartRate = hrSource ? Math.round(positive(hrSource.record.hr)) : null;
+  const updated = Math.max(positive(w.t),positive(hc.t));
+  const exercises = plan.exercises;
+  const totalSets = exercises.reduce((n,ex) => n+(parseInt(ex.sets)||1),0);
+  const doneSets = exercises.reduce((n,ex) => {
+    const total = parseInt(ex.sets)||1, sets = (log.workouts||{})[ex.id+"_sets"];
+    return n+(Array.isArray(sets) ? sets.slice(0,total).filter(s=>s===true || (s&&s.done)).length : (log.workouts||{})[ex.id] ? total : 0);
+  },0);
+  const meals = MEALS.filter(m=>(log.meals||{})[m.id]).length;
+  const supps = SUPPLEMENTS.filter(s=>(log.supplements||{})[s.id]).length;
+  const allTasks = totalSets+MEALS.length+SUPPLEMENTS.length;
+  const dayPct = Math.round((doneSets+meals+supps)/Math.max(1,allTasks)*100);
+  const rings = [{label:"Day",pct:dayPct,color:P.purple},{label:"Steps",pct:stepPct,color:P.acc},
+    {label:"Sets",pct:totalSets ? doneSets/totalSets*100 : 0,color:P.bad}];
+  const stepSource = steps ? positive(hc.s)>=positive(w.s) ? "Samsung Health" : WATCH_NAME[kind] : null;
+  const linked = !!(window.FTWLive && FTWLive.isPaired());
+  return (
+    <section className="ft-surface daily-device-card" aria-label="Daily watch progress">
+      <div className="daily-device-header"><div><div className="daily-eyebrow">YOUR DAY, IN MOTION</div><h2>Daily rings</h2></div><span className="device-status">{updated ? `Updated ${agoText(updated)}` : "Waiting for data"}</span></div>
+      <div className="device-picker" role="group" aria-label="Choose watch type">
+        {["galaxy","apple","fit"].map(value=><button key={value} aria-pressed={kind===value} onClick={()=>setKind(value)}>{WATCH_NAME[value]}</button>)}
+      </div>
+      <div className="device-summary">
+        <DeviceProgress kind={kind} rings={rings}/>
+        <div className="device-metrics">
+          <div className="device-steps"><span className="daily-eyebrow">STEPS</span><strong><CountUp to={steps}/></strong><span>of 10,000 · {Math.round(stepPct)}%</span></div>
+          <div className="device-heart"><span aria-hidden="true">♥</span><strong>{heartRate || "—"}</strong><span>BPM</span></div>
+          <div className="reading-caption">{hrSource ? `Latest available · received ${agoText(hrSource.record.t)} via ${hrSource.name}` : "No heart-rate reading yet"}</div>
+        </div>
+      </div>
+      <div className="daily-ring-legend">{rings.map(r=><div key={r.label}><i style={{background:r.color}}/><span>{r.label}</span><strong>{Math.round(r.pct)}%</strong></div>)}</div>
+      <div className="daily-device-caption">{totalSets ? `${doneSets}/${totalSets} sets · ${meals}/${MEALS.length} meals · ${supps}/${SUPPLEMENTS.length} supplements` : "Rest day · daily plan tracks meals and supplements"}{stepSource ? ` · Steps: ${stepSource}` : ""}</div>
+      <div className={"sync-points"+(rewards.celebrate ? " points-earned" : "")}>
+        <div><span className="daily-eyebrow">SYNC POINTS</span><strong>{rewards.points.toLocaleString()} <small>PTS</small></strong></div>
+        <div className="sync-points-message" role="status" aria-live="polite">{rewards.celebrate ? "+25 points! Today's sync is complete." : rewards.earnedToday ? "Today's +25 earned ✓" : "Earn +25 with your first successful sync today"}</div>
+      </div>
+      <p className="sync-points-help">{kind === "fit" ? "Galaxy Fit data syncs through Samsung Health and the Android bridge." : linked ? "New wearable data or a newly imported workout earns points once per day." : "Connect your watch below. Points arrive after data is received."} Points stay in this browser.</p>
+    </section>
   );
 }
 
@@ -1188,6 +1318,7 @@ function WatchSyncCard({ logs, setLogs, onCelebrate, health }) {
     setLogs(r.logs);
     storageSet("logs", r.logs);
     results.current.push({...r, name: s.name, handoff: s.handoff});
+    if (r.added > 0) awardSyncPoints();
   };
 
   const finish = () => {
@@ -1262,17 +1393,19 @@ function WatchSyncCard({ logs, setLogs, onCelebrate, health }) {
         <div style={{display: "flex", alignItems: "center", justifyContent: "space-between", gap: 8}}>
           <div style={{display: "flex", alignItems: "center", gap: 6}}>
             <div style={{width: 8, height: 8, borderRadius: "50%", background: `${P.good}`, boxShadow: `0 0 6px ${P.good}`, animation: live === "live" ? "pulseGlow 2s ease-in-out infinite" : "none"}}/>
-            <span style={{fontFamily: "'Barlow Condensed',sans-serif", fontSize: 16, fontWeight: 800, letterSpacing: 1, color: `${P.good}`, textTransform: "uppercase"}}>Paired</span>
+            <span style={{fontFamily: "'Barlow Condensed',sans-serif", fontSize: 16, fontWeight: 800, letterSpacing: 1, color: `${P.good}`, textTransform: "uppercase"}}>{kind === "fit" ? "Bridge linked" : "Paired"}</span>
             {live !== "live" && lt && <span style={{fontFamily: "'DM Sans',sans-serif", fontSize: 11, color: `${P.sub}`}}>· {lt[1]}</span>}
           </div>
           <button onClick={unpair} style={{background: "none", border: "none", color: `${P.muted}`, fontFamily: "'DM Sans',sans-serif", fontSize: 11, cursor: "pointer"}}>Unlink</button>
         </div>
+      ) : kind === "fit" ? (
+        <div style={{fontSize:12,color:P.sub,lineHeight:1.6}}>Pair the band in Galaxy Wearable, then sync through Samsung Health and the Android bridge. Select Galaxy Watch only for a watch running the FitTracker watch app.</div>
       ) : kind === "galaxy" ? (
         <button disabled={busy} onClick={pair} style={{...btn(true), width: "100%"}}>🔗 PAIR</button>
       ) : (
         <div style={{fontFamily: "'DM Sans',sans-serif", fontSize: 12, color: `${P.sub}`}}>Not linked</div>
       )}
-      {paired && kind === "galaxy" && (
+      {paired && kind !== "apple" && (
         <div onClick={connectHealth} style={{display: "flex", alignItems: "center", justifyContent: "space-between", gap: 8, marginTop: 10, paddingTop: 10, borderTop: `1px solid rgba(${P.ink},0.12)`, cursor: "pointer"}}>
           <span style={{fontFamily: "'DM Sans',sans-serif", fontSize: 12, color: `${P.sub}`}}>🩺 Samsung Health</span>
           <span style={{fontFamily: "'DM Sans',sans-serif", fontSize: 11, color: health && !health.err ? `${P.good}` : `${P.muted}`}}>{hcLine} ›</span>
@@ -1851,7 +1984,7 @@ function WatchSettingsCard() {
         <div style={{marginTop: 10, padding: "12px 14px", background: `${P.inset}`, border: `1px solid rgba(${P.ink},0.16)`, borderRadius: 20}}>
           <div style={{...small, marginBottom: 8}}>Which watch does this phone use?</div>
           <div style={{display: "flex", background: `${P.inset2}`, border: `1px solid rgba(${P.ink},0.16)`, borderRadius: 16, padding: 3, marginBottom: 12}}>
-            {["galaxy", "apple"].map(k => (
+            {["galaxy", "apple", "fit"].map(k => (
               <button key={k} onClick={() => chooseKind(k)} style={{
                 flex: 1, padding: "7px 6px", borderRadius: 9, border: "none", cursor: "pointer",
                 background: kind === k ? `${P.acc}` : "transparent", color: kind === k ? `${P.onAcc}` : `${P.sub}`,
@@ -1860,9 +1993,8 @@ function WatchSettingsCard() {
             ))}
           </div>
 
-          {kind === "galaxy" && (
-            <div style={small}>Pair from the Watch card on the Today screen.</div>
-          )}
+          {kind === "galaxy" && <div style={small}>Pair from the Watch card on the Today screen.</div>}
+          {kind === "fit" && <div style={small}>Pair your band in Galaxy Wearable. Activity arrives through Samsung Health and the Android bridge. The band does not use the Galaxy Watch QR workout link.</div>}
 
           {kind === "apple" && !setupInfo && (
             <>
@@ -1918,6 +2050,7 @@ function WatchImportCard({ logs, setLogs, onCelebrate }) {
     setLogs(r.logs);
     storageSet("logs", r.logs);
     results.current.push({...r, name: s.name, handoff: s.handoff});
+    if (r.added > 0) awardSyncPoints();
   };
 
   const finish = () => {
@@ -2364,7 +2497,8 @@ function DataCard({ logs, setLogs, onCelebrate }) {
 
 /* ─── DASHBOARD ──────────────────────────────────────────────────────────── */
 function Dashboard({ logs, profile, profileSetUp, setView, setSelectedDate, setLogs, onCelebrate, activity, health }) {
-  const today = todayKey();
+  const [today, setToday] = useState(todayKey);
+  useEffect(() => {const interval=setInterval(() => setToday(todayKey()),30000); return () => clearInterval(interval);}, []);
   const log = logs[today] || {};
   const dow = DOW(today);
   const plan = WEEKLY_PLAN[dow];
@@ -2458,7 +2592,7 @@ function Dashboard({ logs, profile, profileSetUp, setView, setSelectedDate, setL
         </div>
       </SpotlightCard>
 
-      {window.FTWLive && FTWLive.isPaired() && <ActivityCard activity={activity}/>}
+      <ActivityCard activity={activity} log={log} plan={plan}/>
 
       <WatchSyncCard logs={logs} setLogs={setLogs} onCelebrate={onCelebrate} health={health}/>
       <GymCardsCard/>

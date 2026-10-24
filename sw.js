@@ -3,7 +3,7 @@
 // - Icons / manifest / other same-site files: cache first.
 // - Everything else (the sync database, live streams, CDNs) is left alone. Intercepting the
 //   database's live stream broke watch sync, so it must never go through here.
-const CACHE = 'gains-tracker-v4';
+const CACHE = 'gains-tracker-v5';
 const SHELL = ['./index.html', './manifest.json', './icon-192.png', './icon-512.png'];
 
 self.addEventListener('install', (e) => {
